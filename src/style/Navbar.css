@@ -1,0 +1,25 @@
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.far,
+.fas .fa-moon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.fas {
+  font-size: 1.2rem;
+}
+
+.fa-moon {
+  color: #1f194a;
+}
+
+.mx-3 {
+  margin: 0 1.5rem;
+}
