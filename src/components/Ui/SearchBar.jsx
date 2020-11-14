@@ -37,7 +37,9 @@ export default function SearchBar() {
   };
 
   return (
-    <SearchContainer onChange={handleChange}>
+    <SearchContainer
+      onChange={handleChange}
+      onKeyDown={(e) => e.key === "Enter" && handleSearch()}>
       <InputContainer>
         <i className='fas fa-search'></i>
         <Input

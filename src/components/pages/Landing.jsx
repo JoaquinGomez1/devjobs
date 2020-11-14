@@ -18,7 +18,6 @@ export default function Landing() {
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
   const history = useHistory();
-  const [isInitialRender, setIsInitialRender] = useState(true);
 
   const fetchNextPage = async () => {
     setLoadingMore(true);
@@ -31,11 +30,6 @@ export default function Landing() {
     setLoadingMore(false);
     setPage(page + 1);
   };
-
-  useEffect(() => {
-    // Make 'Load more' button render only after the page has fetched at least one job
-    jobsList.length >= 1 && setIsInitialRender(false);
-  }, [jobsList]);
 
   return (
     <>
@@ -58,7 +52,7 @@ export default function Landing() {
 
       {!isInitialRender && (
         <div>
-          {loadingMore && <Loader />}
+          {!loading && <Loader />}
           <Button
             onClick={fetchNextPage}
             style={{ margin: "20px auto", maxWidth: "max-content" }}>
