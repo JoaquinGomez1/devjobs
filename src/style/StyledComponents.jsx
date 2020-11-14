@@ -1,8 +1,14 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { motion } from "framer-motion";
 
+export const GlobalStyle = createGlobalStyle`
+  body{
+    color: ${(props) => props.theme.textColor};
+    background-color: ${(props) => props.theme.backgroundColor};}
+`;
+
 export const Title = styled.h2`
-  color: #2b2b2b;
+  color: ${(props) => props.theme.title};
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -12,7 +18,7 @@ export const Title = styled.h2`
 `;
 
 export const SubTitle = styled.p`
-  color: #747474;
+  color: ${(props) => props.theme.subheader};
   margin: 0 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -37,7 +43,8 @@ export const Button = styled.div`
 export const CardContainer = styled(motion.div)`
   width: 260px;
   height: 190px;
-  background-color: white;
+  background-color: ${(props) => props.theme.innerBackground};
+  color: ${(props) => props.theme.textColor};
   padding: 1.2rem 2rem;
   position: relative;
   border-radius: 8px;
@@ -60,11 +67,11 @@ export const CardImg = styled.div`
 `;
 
 export const CardSubheader = styled.p`
-  color: #747474;
+  color: ${(props) => props.theme.subheader};
 `;
 
 export const CardTitle = styled.h3`
-  color: #2b2b2b;
+  color: ${(props) => props.theme.title};
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -90,13 +97,14 @@ export const JobsContainer = styled.div`
   gap: 40px;
   justify-content: center;
   align-items: center;
+  background-color: inherit;
 `;
 
 export const JobDetailContainer = styled(motion.div)`
   width: 90vw;
   max-width: 1000px;
   width: 90vw;
-  background-color: white;
+  background-color: ${(props) => props.theme.innerBackground};
   padding: 2rem 1.5rem;
   border-radius: 8px;
   margin: -30px auto 30px;
@@ -132,7 +140,7 @@ export const SearchContainer = styled.form`
   display: grid;
   max-width: 1500px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  background-color: white;
+  background-color: ${(props) => props.theme.innerBackground};
   padding: 0.6rem 1.5rem;
   border-radius: 8px;
   margin: -40px auto 0;
@@ -149,13 +157,14 @@ export const InputContainer = styled.div`
 export const Input = styled.input`
   width: 100%;
   padding: 1rem;
-  color: rgba(0, 0, 0, 0.8);
+  color: ${(props) => props.theme.textColor};
   border: none;
   outline: none;
   font-size: 0.9rem;
+  background-color: ${(props) => props.theme.backgroundColor};
 
   &::placeholder {
-    color: rgba(0, 0, 0, 0.4);
+    color: ${(props) => props.theme.textColor};
     font-weight: 600;
   }
 `;

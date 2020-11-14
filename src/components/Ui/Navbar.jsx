@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ToggleSwitch from "./ToggleSwitch";
+import "../../style/Navbar.css";
+import { StyleThemeProvider } from "../context/ThemeContext";
 
 const Nav = styled.nav`
   height: 150px;
@@ -8,6 +11,7 @@ const Nav = styled.nav`
   background-color: #5746f1;
   position: relative;
   z-index: 1;
+  overflow-y: hidden;
 `;
 
 const NavContent = styled.div`
@@ -41,16 +45,21 @@ const BackgroundTriangle = styled.div`
 `;
 
 export default function Navbar() {
+  const { isLightTheme, setIsLightTheme } = useContext(StyleThemeProvider);
+
+  console.log(isLightTheme);
+
   return (
     <Nav>
       <NavContent>
         <BackgroundTriangle />
         <Link to='/'>
-          <NavTitle>devjobs</NavTitle>
+          <NavTitle>dev{"{jobs}"}</NavTitle>
         </Link>
-        <div>
-          <i class='far fa-sun' />
-          <i class='far fa-moon' />
+        <div className='flex align-center'>
+          <i className='far fa-sun mx-3' />
+          <ToggleSwitch onClick={(e) => setIsLightTheme(!isLightTheme)} />
+          <i className='fas fa-moon mx-3' />
         </div>
       </NavContent>
     </Nav>

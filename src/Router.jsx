@@ -9,18 +9,26 @@ import Landing from "./components/pages/Landing";
 import JobDetail from "./components/pages/JobDetail";
 import Navbar from "./components/Ui/Navbar";
 import { SelectedJobProvider } from "./components/context/SelectedJob";
+import { StyleThemeProvider } from "./components/context/ThemeContext";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./style/StyledComponents";
+import { light, dark } from "./style/Themes";
 
 export default function Router() {
+  const { isLightTheme } = useContext(StyleThemeProvider);
   return (
     <>
-      <BRouter>
-        <Navbar />
-        <Switch>
-          <Route path='/' exact component={Landing} />
-          <RedirectOnRefresh path='/jobs/:id' component={JobDetail} />
-          <Route path='*' component={() => <h1> Not found </h1>} />
-        </Switch>
-      </BRouter>
+      <ThemeProvider theme={isLightTheme ? light : dark}>
+        <GlobalStyle />
+        <BRouter>
+          <Navbar />
+          <Switch>
+            <Route path='/' exact component={Landing} />
+            <RedirectOnRefresh path='/jobs/:id' component={JobDetail} />
+            <Route path='*' component={() => <h1> Not found </h1>} />
+          </Switch>
+        </BRouter>
+      </ThemeProvider>
     </>
   );
 }

@@ -10,7 +10,6 @@ import {
   CardInfo,
 } from "../../style/StyledComponents";
 import { getTimeAgo } from "../../utils/time";
-import { motion } from "framer-motion";
 
 export default function JobDetail() {
   const { selectedJob } = useContext(SelectedJobProvider);
@@ -31,19 +30,16 @@ export default function JobDetail() {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, ease: [0.05, 0.23, 0.88, 0.96] }}>
+    <>
       <JobDetailContainer>
-        <JobDetailHead intial={{ y: -60 }} animate={{ y: 0 }}>
+        <JobDetailHead>
           <JobHeadImage style={{ backgroundImage: `url(${company_logo})  ` }} />
           <div>
             <Title> {company} </Title>
             <SubTitle>{company_url}</SubTitle>
           </div>
 
-          <a href={company_url} target='_blank'>
+          <a href={company_url} target='_blank' rel='noreferrer'>
             <Button bgColor='aliceblue' color='#5746f1;'>
               Company Website
             </Button>
@@ -62,7 +58,11 @@ export default function JobDetail() {
             <CardInfo style={{ margin: "0 2rem" }}>{location}</CardInfo>
           </div>
 
-          <a href={url} target='_blank' style={{ margin: "auto 0" }}>
+          <a
+            href={url}
+            target='_blank'
+            rel='noreferrer'
+            style={{ margin: "auto 0" }}>
             <Button>Apply Now</Button>
           </a>
         </div>
@@ -71,6 +71,6 @@ export default function JobDetail() {
           style={{ margin: "40px 2rem" }}
           dangerouslySetInnerHTML={{ __html: description }}></div>
       </JobDetailContainer>
-    </motion.div>
+    </>
   );
 }
