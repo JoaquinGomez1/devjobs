@@ -50,9 +50,9 @@ export default function Landing() {
       </JobsContainer>
       {loading && <Loader></Loader>}
 
-      {!isInitialRender && (
+      {!loading && (
         <div>
-          {!loading && <Loader />}
+          {loading && <Loader />}
           <Button
             onClick={fetchNextPage}
             style={{ margin: "20px auto", maxWidth: "max-content" }}>
