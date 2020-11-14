@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import Router from "./Router";
+import JobsContext from "./components/context/JobsContext";
+import SelectedJobContext from "./components/context/SelectedJob";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <JobsContext>
+        <SelectedJobContext>
+          <Router />
+        </SelectedJobContext>
+      </JobsContext>
     </div>
   );
 }
