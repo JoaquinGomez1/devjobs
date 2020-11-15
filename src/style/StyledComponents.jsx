@@ -35,7 +35,7 @@ export const SubTitle = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-export const Button = styled.div`
+export const Button = styled(motion.div)`
   padding: 0.8rem 1.5rem;
   text-align: center;
   border-radius: 8px;

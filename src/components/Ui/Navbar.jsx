@@ -47,8 +47,6 @@ const BackgroundTriangle = styled.div`
 export default function Navbar() {
   const { isLightTheme, setIsLightTheme } = useContext(StyleThemeProvider);
 
-  console.log(isLightTheme);
-
   return (
     <Nav>
       <NavContent>
@@ -58,7 +56,10 @@ export default function Navbar() {
         </Link>
         <div className='flex align-center'>
           <i className='far fa-sun mx-3' />
-          <ToggleSwitch onClick={(e) => setIsLightTheme(!isLightTheme)} />
+          <ToggleSwitch
+            onChange={() => setIsLightTheme(!isLightTheme)}
+            checked={isLightTheme}
+          />
           <i className='fas fa-moon mx-3' />
         </div>
       </NavContent>

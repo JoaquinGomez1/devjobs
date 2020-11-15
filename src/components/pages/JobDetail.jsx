@@ -66,7 +66,7 @@ export default function JobDetail() {
             target='_blank'
             rel='noreferrer'
             style={{ margin: "auto 0" }}>
-            <Button>Apply Now</Button>
+            <Button whileHover={{ scale: 1.08 }}>Apply Now</Button>
           </a>
         </div>
 
