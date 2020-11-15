@@ -47,7 +47,10 @@ export default function JobDetail() {
         </JobDetailHead>
       </JobDetailContainer>
 
-      <JobDetailContainer style={{ marginTop: "50px" }}>
+      <JobDetailContainer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        style={{ marginTop: "50px" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
             <SubTitle>

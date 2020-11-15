@@ -2,9 +2,17 @@ import styled, { createGlobalStyle } from "styled-components";
 import { motion } from "framer-motion";
 
 export const GlobalStyle = createGlobalStyle`
-  body{
+  body {
     color: ${(props) => props.theme.textColor};
-    background-color: ${(props) => props.theme.backgroundColor};}
+    background-color: ${(props) => props.theme.backgroundColor};
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
 `;
 
 export const Title = styled.h2`
@@ -87,7 +95,7 @@ export const CardInfo = styled.p`
 
 //  ----------------------------------- Jobs Details
 
-export const JobsContainer = styled.div`
+export const JobsContainer = styled(motion.div)`
   width: 90vw;
   max-width: 1500px;
   padding: 2rem 1rem;
@@ -101,7 +109,6 @@ export const JobsContainer = styled.div`
 `;
 
 export const JobDetailContainer = styled(motion.div)`
-  width: 90vw;
   max-width: 1000px;
   width: 90vw;
   background-color: ${(props) => props.theme.innerBackground};
@@ -111,6 +118,7 @@ export const JobDetailContainer = styled(motion.div)`
   box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
   z-index: 2;
   position: relative;
+  min-height: min-content;
 `;
 
 export const JobDetailHead = styled(motion.div)`
@@ -122,6 +130,11 @@ export const JobDetailHead = styled(motion.div)`
   align-items: center;
   z-index: 2;
   position: relative;
+
+  @media (max-width: 440px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const JobHeadImage = styled.div`
@@ -144,14 +157,25 @@ export const SearchContainer = styled.form`
   padding: 0.6rem 1.5rem;
   border-radius: 8px;
   margin: -40px auto 0;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 8px rgba(68, 60, 60, 0.2);
   z-index: 2;
   position: relative;
+
+  & > * {
+    margin: 5px;
+    & > * {
+      margin: 2px;
+    }
+  }
 `;
 
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
+
+  & i {
+    margin: 0 20px;
+  }
 `;
 
 export const Input = styled.input`

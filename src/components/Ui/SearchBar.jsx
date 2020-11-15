@@ -54,11 +54,11 @@ export default function SearchBar() {
           borderColor: "rgba(0,0,0,.6)",
           borderStyle: "solid",
         }}>
-        <i className='fas fa-location-arrow' style={{ margin: "0 20px" }} />
+        <i className='fas fa-location-arrow' />
         <Input type='text' name='location' placeholder='Filter by location' />
       </InputContainer>
       <InputContainer>
-        <i style={{ margin: "0 20px" }} className='fas fa-search'></i>
+        <i className='fas fa-search'></i>
         <Input
           style={{ padding: "0" }}
           name='full_time'
