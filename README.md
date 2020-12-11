@@ -8,5 +8,11 @@
  # Contributing
  If You'd like to contribute to this project please feel free to make a pull request and I'll do my best to review it as fast as possible.
  
+# Tech Stack
+ This project was built using:
+ - React 
+ - Framer motion
+ - Styled components
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
