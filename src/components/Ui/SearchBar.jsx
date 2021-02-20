@@ -7,6 +7,8 @@ import {
 } from "../../style/StyledComponents";
 import { JobsProvider } from "../context/JobsContext";
 
+import headers from "../../headers";
+
 export default function SearchBar() {
   const { setJobsList, setLoading } = useContext(JobsProvider);
   const [searchValues, setSearchValues] = useState({});
@@ -19,8 +21,7 @@ export default function SearchBar() {
     });
   };
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
+  const handleSearch = async () => {
     if (Object.keys(searchValues).length <= 0) return null;
 
     const queryString = Object.keys(searchValues)
@@ -29,8 +30,8 @@ export default function SearchBar() {
       .toLowerCase();
 
     setLoading(true);
-    const url = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?${queryString}`;
-    const req = await fetch(url);
+    const url = `https://jobs.github.com/positions.json?${queryString}`;
+    const req = await fetch(url, headers);
     const res = await req.json();
     setJobsList(res);
     setLoading(false);
@@ -39,13 +40,14 @@ export default function SearchBar() {
   return (
     <SearchContainer
       onChange={handleChange}
-      onKeyDown={(e) => e.key === "Enter" && handleSearch()}>
+      onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+    >
       <InputContainer>
-        <i className='fas fa-search'></i>
+        <i className="fas fa-search"></i>
         <Input
-          name='description'
-          type='text'
-          placeholder='Filter by title, companies, expertise'
+          name="description"
+          type="text"
+          placeholder="Filter by title, companies, expertise"
         />
       </InputContainer>
       <InputContainer
@@ -53,19 +55,20 @@ export default function SearchBar() {
           borderWidth: "0 1px 0 1px",
           borderColor: "rgba(0,0,0,.6)",
           borderStyle: "solid",
-        }}>
-        <i className='fas fa-location-arrow' />
-        <Input type='text' name='location' placeholder='Filter by location' />
+        }}
+      >
+        <i className="fas fa-location-arrow" />
+        <Input type="text" name="location" placeholder="Filter by location" />
       </InputContainer>
       <InputContainer>
-        <i className='fas fa-search'></i>
+        <i className="fas fa-search"></i>
         <Input
           style={{ padding: "0" }}
-          name='full_time'
-          type='checkbox'
-          placeholder='Filter by title, companies, expertise'
+          name="full_time"
+          type="checkbox"
+          placeholder="Filter by title, companies, expertise"
         />
-        <label htmlFor='fulltime' style={{ fontWeight: 600 }}>
+        <label htmlFor="fulltime" style={{ fontWeight: 600 }}>
           Full Time Only
         </label>
         <Button onClick={handleSearch}>Search</Button>

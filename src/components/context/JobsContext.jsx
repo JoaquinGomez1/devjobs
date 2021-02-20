@@ -8,15 +8,18 @@ export default function JobsContext(props) {
 
   const fetchRequest = async () => {
     const reqHeader = {
-      type: "GET",
-      contentType: "application/json",
-      url: "https://jsonplaceholder.typicode.com/todos/1",
-      dataType: "json",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
     };
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = proxy + "https://jobs.github.com/positions.json?page=1";
+    const url = "https://jobs.github.com/positions.json?page=1";
     const req = await fetch(url, reqHeader);
     const res = await req.json();
+    console.log(req);
+    console.log(res);
     setJobsList(res);
     setLoading(false);
   };

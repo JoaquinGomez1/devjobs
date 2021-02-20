@@ -9,6 +9,8 @@ import { SelectedJobProvider } from "../context/SelectedJob";
 
 import { JobsContainer, Button } from "../../style/StyledComponents";
 
+import headers from "../../headers";
+
 export default function Landing() {
   // Context
   const { jobsList, setJobsList, loading, setLoading } = useContext(
@@ -22,10 +24,8 @@ export default function Landing() {
 
   const fetchNextPage = async () => {
     setLoading(true);
-    const url = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?page=${
-      page + 1
-    }`;
-    const req = await fetch(url);
+    const url = `https://jobs.github.com/positions.json?page=${page + 1}`;
+    const req = await fetch(url, headers);
     const res = await req.json();
     setJobsList([...jobsList].concat(res));
     setPage(page + 1);
@@ -55,7 +55,8 @@ export default function Landing() {
         <div>
           <Button
             onClick={fetchNextPage}
-            style={{ margin: "20px auto", maxWidth: "max-content" }}>
+            style={{ margin: "20px auto", maxWidth: "max-content" }}
+          >
             Load More
           </Button>
         </div>
