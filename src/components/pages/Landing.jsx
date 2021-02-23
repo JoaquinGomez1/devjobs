@@ -26,6 +26,7 @@ export default function Landing() {
     setLoading(true);
     const url = `https://jobs.github.com/positions.json?page=${page + 1}`;
     const req = await fetch(url, headers);
+
     const res = await req.json();
     setJobsList([...jobsList].concat(res));
     setPage(page + 1);

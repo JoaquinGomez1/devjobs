@@ -9,7 +9,10 @@ export default function JobsContext(props) {
 
   const fetchRequest = async () => {
     const url = "https://jobs.github.com/positions.json?page=1";
-    const req = await fetch(url, headers);
+    const reqHeaders = headers;
+    reqHeaders.method = "GET";
+    console.log(reqHeaders);
+    const req = await fetch(url, reqHeaders);
     const res = await req.json();
     setJobsList(res);
     setLoading(false);
