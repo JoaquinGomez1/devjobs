@@ -8,7 +8,7 @@ export default function JobsContext(props) {
   const [loading, setLoading] = useState(true);
 
   const fetchRequest = async () => {
-    const url = "/positions.json?page=1";
+    const url = "/api/positions.json?page=1";
     const reqHeaders = headers;
     reqHeaders.method = "GET";
 
