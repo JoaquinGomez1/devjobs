@@ -11,7 +11,9 @@ export default function JobsContext(props) {
     const url = "/positions.json?page=1";
     const reqHeaders = headers;
     reqHeaders.method = "GET";
+
     const req = await fetch(url, reqHeaders);
+    console.log(req);
     const res = await req.json();
     setJobsList(res);
     setLoading(false);
