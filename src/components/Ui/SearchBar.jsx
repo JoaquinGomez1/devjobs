@@ -30,7 +30,7 @@ export default function SearchBar() {
       .toLowerCase();
 
     setLoading(true);
-    const url = `https://jobs.github.com/positions.json?${queryString}`;
+    const url = `api/positions.json?${queryString}`;
     const req = await fetch(url, headers);
     const res = await req.json();
     setJobsList(res);

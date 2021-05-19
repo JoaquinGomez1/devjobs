@@ -13,8 +13,8 @@ export default function JobsContext(props) {
     reqHeaders.method = "GET";
 
     const req = await fetch(url, reqHeaders);
-    console.log(req);
     const res = await req.json();
+    console.log(res);
     setJobsList(res);
     setLoading(false);
   };

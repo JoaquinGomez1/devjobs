@@ -13,9 +13,8 @@ import headers from "../../headers";
 
 export default function Landing() {
   // Context
-  const { jobsList, setJobsList, loading, setLoading } = useContext(
-    JobsProvider
-  );
+  const { jobsList, setJobsList, loading, setLoading } =
+    useContext(JobsProvider);
   const { setSelectedJob } = useContext(SelectedJobProvider);
 
   // Local State
@@ -24,7 +23,7 @@ export default function Landing() {
 
   const fetchNextPage = async () => {
     setLoading(true);
-    const url = `/positions.json?page=${page + 1}`;
+    const url = `api/positions.json?page=${page + 1}`;
     const req = await fetch(url, headers);
 
     const res = await req.json();
@@ -37,18 +36,16 @@ export default function Landing() {
     <>
       <SearchBar />
       <JobsContainer>
-        {jobsList.length >= 1 &&
-          jobsList &&
-          jobsList.map((job) => (
-            <Card
-              onClick={() => {
-                setSelectedJob(job);
-                history.push(`/jobs/${job.id}`);
-              }}
-              key={job.id}
-              data={job}
-            />
-          ))}
+        {jobsList?.map((job) => (
+          <Card
+            onClick={() => {
+              setSelectedJob(job);
+              history.push(`/jobs/${job.id}`);
+            }}
+            key={job.id}
+            data={job}
+          />
+        ))}
       </JobsContainer>
       {loading && <Loader />}
 
