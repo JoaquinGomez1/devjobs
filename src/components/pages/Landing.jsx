@@ -38,7 +38,7 @@ export default function Landing() {
     <>
       <SearchBar />
       <JobsContainer>
-        {jobsList.length &&
+        {jobsList.length >= 1 &&
           jobsList?.map((job) => (
             <Card
               onClick={() => {
@@ -50,7 +50,11 @@ export default function Landing() {
             />
           ))}
       </JobsContainer>
-      {noResults && <Title> It Appears that there are no results </Title>}
+      {noResults && (
+        <div style={{ margin: "0 auto", textAlign: "center" }}>
+          <Title> It Appears that there are no results </Title>
+        </div>
+      )}
       {loading && <Loader />}
 
       {!loading && (
