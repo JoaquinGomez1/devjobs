@@ -14,7 +14,6 @@ export default function JobsContext(props) {
 
     const req = await fetch(url, reqHeaders);
     const res = await req.json();
-    console.log(res);
     setJobsList(res);
     setLoading(false);
   };

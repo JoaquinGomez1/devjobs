@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { JobsProvider } from "../context/JobsContext";
 import { SelectedJobProvider } from "../context/SelectedJob";
 
-import { JobsContainer, Button } from "../../style/StyledComponents";
+import { JobsContainer, Button, Title } from "../../style/StyledComponents";
 
 import headers from "../../headers";
 
@@ -32,21 +32,25 @@ export default function Landing() {
     setLoading(false);
   };
 
+  const noResults = (!jobsList || !jobsList.length) && !loading;
+
   return (
     <>
       <SearchBar />
       <JobsContainer>
-        {jobsList?.map((job) => (
-          <Card
-            onClick={() => {
-              setSelectedJob(job);
-              history.push(`/jobs/${job.id}`);
-            }}
-            key={job.id}
-            data={job}
-          />
-        ))}
+        {jobsList.length &&
+          jobsList?.map((job) => (
+            <Card
+              onClick={() => {
+                setSelectedJob(job);
+                history.push(`/jobs/${job.id}`);
+              }}
+              key={job.id}
+              data={job}
+            />
+          ))}
       </JobsContainer>
+      {noResults && <Title> It Appears that there are no results </Title>}
       {loading && <Loader />}
 
       {!loading && (
